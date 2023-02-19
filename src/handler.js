@@ -18,6 +18,7 @@ const addBookshelfHandler = (request, h) => {
   const insertedAt = new Date().toISOString();
   const updateAt = insertedAt;
 
+  // jika nama tidak dilampirkan akan menampilkan error
   if (name === undefined) {
     const response = h.response({
       status: 'fail',
@@ -27,6 +28,7 @@ const addBookshelfHandler = (request, h) => {
     return response;
   }
 
+  // jika readPage > pageCount akan menampilkan error
   if (readPage > pageCount) {
     const response = h.response({
       status: 'fail',
@@ -73,7 +75,7 @@ const addBookshelfHandler = (request, h) => {
   return response;
 };
 
-const getAllBooksHandler = (request, h) => {
+const getAllBookshelfHandler = (request, h) => {
   const response = h.response({
     status: 'success',
     data: {
@@ -88,7 +90,7 @@ const getAllBooksHandler = (request, h) => {
   return response;
 };
 
-const getBooksByIdHandler = (request, h) => {
+const getBookshelfByIdHandler = (request, h) => {
   const { bookId } = request.params;
 
   const book = books.filter((b) => b.id === bookId)[0];
@@ -113,7 +115,7 @@ const getBooksByIdHandler = (request, h) => {
   return response;
 };
 
-const updateBooksById = (request, h) => {
+const updateBookshelfById = (request, h) => {
   // mendapatkan bookId
   const { bookId } = request.params;
   const {
@@ -182,7 +184,7 @@ const updateBooksById = (request, h) => {
   return response;
 };
 
-const deleteBookByIdHandler = (request, h) => {
+const deleteBookshelfByIdHandler = (request, h) => {
   const { bookId } = request.params;
   const index = books.findIndex((book) => book.id === bookId);
 
@@ -206,8 +208,8 @@ const deleteBookByIdHandler = (request, h) => {
 
 module.exports = {
   addBookshelfHandler,
-  getAllBooksHandler,
-  getBooksByIdHandler,
-  updateBooksById,
-  deleteBookByIdHandler,
+  getAllBookshelfHandler,
+  getBookshelfByIdHandler,
+  updateBookshelfById,
+  deleteBookshelfByIdHandler,
 };
