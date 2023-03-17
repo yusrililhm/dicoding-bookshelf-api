@@ -1,3 +1,3 @@
 const books = [];
 
-module.export = books;
+module.exports = books;

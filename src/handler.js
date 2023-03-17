@@ -19,12 +19,12 @@ const addBookshelfHandler = (request, h) => {
   const updateAt = insertedAt;
 
   // jika nama tidak dilampirkan akan menampilkan error
-  if (name === undefined) {
+  if (!name) {
     const response = h.response({
       status: 'fail',
       message: 'Gagal menambahkan buku. Mohon isi nama buku',
     });
-    response.code(404);
+    response.code(400);
     return response;
   }
 
@@ -34,11 +34,12 @@ const addBookshelfHandler = (request, h) => {
       status: 'fail',
       message: 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount',
     });
-    response.code(404);
+    response.code(400);
     return response;
   }
 
   const newBooks = {
+    id,
     name,
     year,
     author,
@@ -79,7 +80,7 @@ const getAllBookshelfHandler = (request, h) => {
   const response = h.response({
     status: 'success',
     data: {
-      book: books.map((book) => ({
+      books: books.map((book) => ({
         id: book.id,
         name: book.name,
         publisher: book.publisher,
@@ -202,7 +203,7 @@ const deleteBookshelfByIdHandler = (request, h) => {
     status: 'fail',
     message: 'Buku gagal dihapus. Id tidak ditemukan',
   });
-  response.code(400);
+  response.code(404);
   return response;
 };
 
