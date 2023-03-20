@@ -14,9 +14,9 @@ const addBookshelfHandler = (request, h) => {
   } = request.payload;
 
   const id = nanoid(16);
-  const finished = pageCount === readPage;
   const insertedAt = new Date().toISOString();
-  const updateAt = insertedAt;
+  const updatedAt = insertedAt;
+  const finished = pageCount === readPage;
 
   // jika nama tidak dilampirkan akan menampilkan error
   if (!name) {
@@ -50,7 +50,7 @@ const addBookshelfHandler = (request, h) => {
     finished,
     reading,
     insertedAt,
-    updateAt,
+    updatedAt,
   };
 
   books.push(newBooks);
@@ -131,7 +131,7 @@ const updateBookshelfById = (request, h) => {
   } = request.payload;
 
   const finished = pageCount === readPage;
-  const updateAt = new Date().toISOString();
+  const updatedAt = new Date().toISOString();
   const index = books.findIndex((book) => book.id === bookId);
 
   // error jika nama tidak dilampirkan
@@ -166,7 +166,7 @@ const updateBookshelfById = (request, h) => {
       readPage,
       finished,
       reading,
-      updateAt,
+      updatedAt,
     };
     const response = h.response({
       status: 'success',
