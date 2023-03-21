@@ -1,36 +1,36 @@
 const {
-  addBookshelfHandler,
-  getAllBookshelfHandler,
-  getBookshelfByIdHandler,
-  updateBookshelfById,
-  deleteBookshelfByIdHandler,
+  addBooksShelfHandler,
+  getAllBooksShelfHandler,
+  getBooksShelfByIdHandler,
+  updateBooksShelfById,
+  deleteBooksShelfByIdHandler,
 } = require('./handler');
 
 const routes = [
   {
     method: 'POST',
     path: '/books',
-    handler: addBookshelfHandler,
+    handler: addBooksShelfHandler,
   },
   {
     method: 'GET',
     path: '/books',
-    handler: getAllBookshelfHandler,
+    handler: getAllBooksShelfHandler,
   },
   {
     method: 'GET',
     path: '/books/{bookId}',
-    handler: getBookshelfByIdHandler,
+    handler: getBooksShelfByIdHandler,
   },
   {
     method: 'PUT',
     path: '/books/{bookId}',
-    handler: updateBookshelfById,
+    handler: updateBooksShelfById,
   },
   {
     method: 'DELETE',
     path: '/books/{bookId}',
-    handler: deleteBookshelfByIdHandler,
+    handler: deleteBooksShelfByIdHandler,
   },
 ];
 
